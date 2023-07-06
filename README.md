@@ -76,7 +76,7 @@ Then, launch the following script:
 
 ```python create_dataset.py```
 
-This will create a dataset made of multiple identities. The size of the created dataset is approximately 20Gb. You can use less frequencies in order to have a smaller dataset (modify value in file `dataset_creation/default_options_dataset.json`), but the dataset will not be usable by the given pretrained model and you will have to retrain a new one.
+This will create a dataset made of multiple identities. The size of the created dataset is approximately 20Gb. You can use less frequencies in order to have a smaller dataset by modifying the value in the file `dataset_creation/default_options_dataset.json`, but the dataset will not be usable by the given pretrained model and you will have to retrain a new one.
 
 ## Evaluate / visualize a pretrained model
 
@@ -98,7 +98,7 @@ or <br />
 Training is done using the framework [PyTorch Lightning](https://www.pytorchlightning.ai/index.html). It will create a new folder in the `checkpoints/` directory and create logs in the corresponding folder, which you can visualize using the command `tensorboard --logdir checkpoints/`. 
 
 ## Acknowledgements
-This work was supported by the ANR project Human4D ANR-19-CE23-0020 and was granted access to the HPC resources of IDRIS under the allocation 2022-AD011012424R1 made by GENCI.
+This work was supported by the ANR project Human4D ANR-19-CE23-0020 and was granted access to the AI resources of IDRIS under the allocation 2023-AD011012424R2 made by GENCI.
 
 ## License
 This work is Copyright of University of Lyon, 2022. It is distributed under the Mozilla Public License v. 2.0. (refer to the accompanying file LICENSE-MPL2.txt or a copy at http://mozilla.org/MPL/2.0/).
