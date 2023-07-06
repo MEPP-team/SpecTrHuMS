@@ -1,0 +1,9 @@
+*__pycache__*
+data/
+tb_logs/
+checkpoints/
+imgui.ini
+output/
+script_*.slurm
+.vscode/
+data_temp
