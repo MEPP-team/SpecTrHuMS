@@ -1,0 +1,23 @@
+{
+  "activation_autoencoder": "ELU",
+  "activation_transformer": "gelu",
+  "d_ff": 1024,
+  "d_model": 256,
+  "dropout": 0,
+  "features": [
+    3,
+    32,
+    64
+  ],
+  "lengths": [
+    -1,
+    64,
+    32
+  ],
+  "n_head": 4,
+  "num_layers": 6,
+  "offset": 5,
+  "size_conv": 3,
+  "size_latent": 256,
+  "size_window": 75
+}

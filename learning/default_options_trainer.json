@@ -1,0 +1,12 @@
+{
+  "check_val_every_n_epoch": 2,
+  "device": "cuda",
+  "learning_rate": 0.0001,
+  "loss_type": "MSE",
+  "model_type": "TransformerEncoder",
+  "num_iterations": 100,
+  "num_workers": 8,
+  "path_dataset": "data/datasets/dataset_MI/",
+  "test_batch_size": 32,
+  "train_batch_size": 32
+}

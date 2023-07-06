@@ -1,0 +1,7 @@
+{
+  "device": "cuda",
+  "path_dataset": "data/datasets/dataset_MI-test/",
+  "amass_directory": "../shape_pose_disent/amass/datasets/",
+  "nb_freqs": 512,
+  "framerate": 25
+}
