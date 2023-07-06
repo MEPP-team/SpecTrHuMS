@@ -4,6 +4,5 @@ tb_logs/
 checkpoints/
 imgui.ini
 output/
-script_*.slurm
 .vscode/
-data_temp
+*__init__*
