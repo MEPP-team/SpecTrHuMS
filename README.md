@@ -34,11 +34,6 @@ Download [this archive](https://drive.google.com/file/d/1blzKhIiMS630qI8t1YaaNYd
 Download [Extended SMPL+H model](https://psfiles.is.tuebingen.mpg.de/downloads/mano/smplh-tar-xz). Create a folder `smplh` in the `data` folder previously created, and extract the archive in the `smplh` folder. Then, download [DMPLS](https://download.is.tue.mpg.de/download.php?domain=smpl&sfile=dmpls.tar.xz), create a folder `dmpls` in the `data` folder, and extract the archive in the `dmpls` folder. This should give the following hierarchy:
 
 ```
-checkpoints
- ┗ SpecTrHuMS-MI
- ┃ ┣ infos.json
- ┃ ┣ last.ckpt
- ┃ ┗ means_stds.pt
 data
  ┣ dmpls
  ┃ ┣ female
