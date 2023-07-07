@@ -96,10 +96,6 @@ Training is done using the framework [PyTorch Lightning](https://www.pytorchligh
 
 An additional video file is provided in order to better visualise results.
 
-![]()
-
-
-
 <p align="center">
 <video width="600" controls>
   <source src="video/SpecTrHuMS.mp4" type="video/mp4">
