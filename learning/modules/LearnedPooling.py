@@ -117,7 +117,6 @@ class LearnedPooling(torch.nn.Module):
             opt["path_dataset"] + "train_means_stds.pt").to(opt["device"])
 
     def enc(self, x):
-
         # standardize
         x = x - self.means_stds[0]
         x = x / self.means_stds[1]

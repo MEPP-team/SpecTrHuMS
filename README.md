@@ -78,9 +78,9 @@ This will create a dataset made of multiple identities. The size of the created 
 A pretrained model is available in the `checkpoints/SpecTrHuMS-MI/` directory and corresponds to the *Spectral Transformer for Human Mesh Sequence learning using Multiple Identities*.
 
 It is possible to: 
-- evaluate the model's scores on the test dataset: `python test.py --load_job_id=SpecTrHuMS-MI` 
+- evaluate the model's scores on the test dataset: `python test.py --load_job_id=SpecTrHuMS-MI`. After computation, scroll up a bit in the console to view results: this allows to reproduce results in Table 3 line `SpecTrHuMS-MI`. 
 - visualize its ability to predict the end of animations: `python visualize.py --load_job_id=SpecTrHuMS-MI` using [aitviewer
-](https://github.com/eth-ait/aitviewer)
+](https://github.com/eth-ait/aitviewer). 
 
 ## Train a new model
 

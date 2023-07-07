@@ -32,7 +32,7 @@ class CustomLightningModule(pl.LightningModule):
         edge_indices_20 = np.concatenate(
             (edge_indices_2, edge_indices_0), axis=1)
 
-        # edge_indices shape => (82656, 2)
+        # edge_indices shape => (41328, 2)
         edge_indices = np.concatenate(
             (edge_indices_01, edge_indices_12, edge_indices_20), axis=0
         )
@@ -53,8 +53,6 @@ class CustomLightningModule(pl.LightningModule):
 
         self.means_stds = self.welford.means_stds.clone()
 
-        self.means_stds_loaded = False
-
         path_means_stds_job_id = self.checkpoint_dir + "means_stds.pt"
 
         print('trying to load ', path_means_stds_job_id)
@@ -63,7 +61,6 @@ class CustomLightningModule(pl.LightningModule):
             print("loading means and stds from ", path_means_stds_job_id)
             self.means_stds = torch.load(
                 path_means_stds_job_id).to(opt["device"])
-            self.means_stds_loaded = True
         else:
             print("not loading means and stds")
 
@@ -84,11 +81,6 @@ class CustomLightningModule(pl.LightningModule):
             torch.tensor(np.load(bm_neutral)[
                          "J_regressor"]).float().to(opt["device"])
         )
-
-        self.upsample = torch.nn.Upsample(scale_factor=2, mode="linear")
-
-        self.all_mean_variance_input = []
-        self.all_mean_variance_output = []
 
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(
@@ -246,6 +238,7 @@ class CustomLightningModule(pl.LightningModule):
         print(
             torch.std(self.all_melv_output[:, self.time_steps], dim=0).cpu().numpy())
 
+    # use in both validation and test
     def validation_test_start(self):
         self.nb_samples = 0
 
@@ -255,6 +248,7 @@ class CustomLightningModule(pl.LightningModule):
         self.melv_input = np.zeros([25])  # each time step MELV input
         self.melv_output = np.zeros([25])  # each time step MELV output
 
+    # use in both validation and test
     def validation_test_step(self, batch):
         coeffs, genders = batch
 
@@ -339,6 +333,7 @@ class CustomLightningModule(pl.LightningModule):
 
         self.mpjpe += mpjpe.cpu().detach().numpy()
 
+    # use in both validation and test
     def validation_test_end(self):
         self.mpjpe = self.mpjpe / self.nb_samples
         self.melv_input = self.melv_input / self.nb_samples
@@ -350,48 +345,34 @@ class CustomLightningModule(pl.LightningModule):
         edge_variance = torch.abs(
             edge_lengths - edge_lengths_gt)  # B x 25 x 20664
 
-        mev_mean = torch.mean(
+        melv_mean = torch.mean(
             edge_variance,
             dim=2,
         )  # B x 25
 
-        mev = torch.sum(
-            mev_mean,
+        melv = torch.sum(
+            melv_mean,
             dim=0,
         )  # 25
 
-        mean_variance = (
-            torch.mean(
-                torch.flatten(edge_variance, 1, 2),
-                dim=1,
-            )
-            .cpu()
-            .numpy()
-            .tolist()
-        )
-
         if input_output is None:
-            pass
+            print('Give input_output')
         elif input_output == "input":
-            self.all_mean_variance_input += mean_variance
-            if hasattr(self, "melv_input"):
-                self.melv_input += mev.cpu().detach().numpy()
+            self.melv_input += melv.cpu().detach().numpy()
 
             if not hasattr(self, "all_melv_input"):
-                self.all_melv_input = mev_mean.clone()
+                self.all_melv_input = melv_mean.clone()
             else:
                 self.all_melv_input = torch.cat(
-                    [self.all_melv_input, mev_mean], dim=0)
+                    [self.all_melv_input, melv_mean], dim=0)
         elif input_output == "output":
-            self.all_mean_variance_output += mean_variance
-            if hasattr(self, "melv_output"):
-                self.melv_output += mev.cpu().detach().numpy()
+            self.melv_output += melv.cpu().detach().numpy()
 
             if not hasattr(self, "all_melv_output"):
-                self.all_melv_output = mev_mean.clone()
+                self.all_melv_output = melv_mean.clone()
             else:
                 self.all_melv_output = torch.cat(
-                    [self.all_melv_output, mev_mean], dim=0
+                    [self.all_melv_output, melv_mean], dim=0
                 )
         else:
             print("wrong input_output")

@@ -64,7 +64,7 @@ class CustomDataset(Dataset):
         print()
 
     def __len__(self):
-        # return 100
+        # return 100  # uncomment for testing
         return len(self.chunk_index_start_frame)
 
     def __getitem__(self, idx):
@@ -81,14 +81,9 @@ class CustomDataset(Dataset):
     def build_indices(self):
         self.chunk_index_start_frame = []
 
-        nb_samples = 0
-
         for i in range(len(self.lengths)):
             current_length = self.lengths[i]
             for j in range(0, current_length, self.offset):
                 if (j + self.size_window) < current_length:
                     offset = (self.sum_lengths[i] + j) * self.nb_freqs * 3
                     self.chunk_index_start_frame.append([i, offset])
-
-                    if j == 0:
-                        nb_samples += 1
