@@ -92,6 +92,20 @@ or <br />
 
 Training is done using the framework [PyTorch Lightning](https://www.pytorchlightning.ai/index.html). It will create a new folder in the `checkpoints/` directory and create logs in the corresponding folder, which you can visualize using the command `tensorboard --logdir checkpoints/`. 
 
+## Video
+
+An additional video file is provided in order to better visualise results.
+
+![]()
+
+
+
+<p align="center">
+<video width="600" controls>
+  <source src="video/SpecTrHuMS.mp4" type="video/mp4">
+</video>
+</p>
+
 ## Acknowledgements
 This work was supported by the ANR project Human4D ANR-19-CE23-0020 and was granted access to the AI resources of IDRIS under the allocation 2023-AD011012424R2 made by GENCI.
 
