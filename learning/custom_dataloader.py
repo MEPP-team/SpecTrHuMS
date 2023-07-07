@@ -36,13 +36,14 @@ class CustomDataset(Dataset):
 
         self.filename_dataset = opt["path_dataset"] + train_test + ".bin"
 
+        # in case another partition with faster write/read properties is available, for example on a supercomputer
         try:
             self.mm_dataset = np.memmap(
-                "/gpfsscratch/rech/xoi/uar55ca/" + self.filename_dataset,
+                "path_to_dataset_other_partition" + self.filename_dataset,
                 dtype="float32",
                 mode="r",
             )
-            print(train_test + " dataloader, reading from SCRATCH partition")
+            print(train_test + " dataloader, reading from faster partition partition")
         except:
             self.mm_dataset = np.memmap(
                 self.filename_dataset, dtype="float32", mode="r"
@@ -58,11 +59,9 @@ class CustomDataset(Dataset):
 
         self.build_indices()
 
-        print(train_test, ": ", len(self.lengths), " anims")
-        print(
-            train_test, ": ", len(
-                self.chunk_index_start_frame), " samples with offset"
-        )
+        print(len(self.lengths), " anims")
+        print(len(self.chunk_index_start_frame), " samples with offset")
+        print()
 
     def __len__(self):
         # return 100

@@ -6,7 +6,6 @@ import torch
 import json
 import pytorch_lightning as pl
 import mmap
-import shutil
 import learning.custom_dataloader as custom_dataloader
 
 from os import path
