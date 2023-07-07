@@ -94,7 +94,7 @@ Training is done using the framework [PyTorch Lightning](https://www.pytorchligh
 
 ## Video
 
-An additional video file is provided in order to better visualise results.
+An additional video file is provided (in the `video` folder) in order to better visualise results.
 
 <p align="center">
 <video width="600" controls>
