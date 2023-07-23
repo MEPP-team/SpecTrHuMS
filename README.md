@@ -31,7 +31,7 @@ Download [this archive](https://drive.google.com/file/d/1blzKhIiMS630qI8t1YaaNYd
 
 ## SMPL models
 
-Download [Extended SMPL+H model](https://psfiles.is.tuebingen.mpg.de/downloads/mano/smplh-tar-xz). Create a folder `smplh` in the `data` folder previously created, and extract the archive in the `smplh` folder. Then, download [DMPLS](https://download.is.tue.mpg.de/download.php?domain=smpl&sfile=dmpls.tar.xz), create a folder `dmpls` in the `data` folder, and extract the archive in the `dmpls` folder. This should give the following hierarchy:
+Go the [MANO](https://mano.is.tue.mpg.de/index.html) `Download` webpage and download the `Extended SMPL+H model`. Create a folder `smplh` in the `data` folder previously created, and extract the archive in the `smplh` folder. Then, go the [SMPL](https://smpl.is.tue.mpg.de/index.html) `Download` webpage and download `DMPLs compatible with SMPL`, create a folder `dmpls` in the `data` folder, and extract the archive in the `dmpls` folder. This should give the following hierarchy:
 
 ```
 data
