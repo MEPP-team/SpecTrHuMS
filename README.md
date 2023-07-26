@@ -67,7 +67,7 @@ First, download the following [AMASS](https://amass.is.tue.mpg.de/download.php) 
 1. ACCAD 
 1. BioMotionLab_NTroje
 
-and modify the variable `amass_directory` in the file `dataset_creation/default_options_dataset.json` to the path where you download AMASS datasets.
+and modify the variable `amass_directory` in the file `dataset_creation/default_options_dataset.json` to the path where you downloaded AMASS datasets.
 
 Then, launch the following script: 
 
