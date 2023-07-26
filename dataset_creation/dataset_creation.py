@@ -90,6 +90,7 @@ def fill_dataset(train_test):
             opt["path_dataset"]
             + train_test
             + "_means_stds.pt",
+            opt["device"]
         )
 
     total_nb_frames = 0
